@@ -23,10 +23,16 @@ To write a program to implement the K Means Clustering for Customer Segmentation
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
+
+
 data = pd.read_csv("Mail_Customers.csv")
-X = data[['Annual Income (k$)', 'Spending Score (1-100)']]
+
 print(data.head())
+
+X = data[['Annual Income (k$)', 'Spending Score (1-100)']]
+
 kmeans = KMeans(n_clusters=5, random_state=42)
+
 y_kmeans = kmeans.fit_predict(X)
 
 
@@ -34,7 +40,6 @@ data['Cluster'] = y_kmeans
 
 print("\nClustered Data:")
 print(data.head())
-
 
 plt.figure()
 plt.scatter(X[y_kmeans == 0]['Annual Income (k$)'], 
